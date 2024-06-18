@@ -1,0 +1,57 @@
+.sectionLogin{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.sectionLogin img{
+    width: 250px;
+} 
+.formLogin{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    flex-direction: column; 
+    border-radius: 5px; 
+    margin: 25px auto;
+
+
+}
+.formLogin label{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    color: #807e7e;
+
+
+}
+.formLogin label input{
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    border: solid 1px black;
+    outline: none;
+    
+    
+}
+.LogoLogin{
+    width: 100px;
+
+}
+input[type = "submit"]{
+    width: 25%;
+    min-height: 50px;
+    font-size: 15px;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin: 10px;
+    background-color: green;
+    color: white;
+
+}
