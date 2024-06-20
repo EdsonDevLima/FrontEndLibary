@@ -1,20 +1,27 @@
 .sectionComponent{
     width: 70%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow-y: scroll;
+    position: relative;
+    
 }
 .sectionComponent form{
     width: 60%;
+    min-height: 350px;
+    border: solid 1px black;
     display: flex;
     flex-direction: column;
+    position: relative;
+    top: 50%;
 }
 .sectionComponent form label{
     display: flex;
     flex-direction: column;
+    
 }
 .sectionComponent form input{
     width: 100%;

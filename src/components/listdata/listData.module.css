@@ -2,7 +2,9 @@
     width: 80%;
     background-color: #ccc;
     min-height: 500px;
-    margin-top: 250px;
+    margin: 20px;
+    position: absolute;
+    top: 100%;
 }
 .line{
     display: flex;
