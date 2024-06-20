@@ -1,21 +1,48 @@
+
 .table{
     width: 80%;
     background-color: #ccc;
     min-height: 500px;
-    margin: 20px;
+    margin: 0px auto;
     position: absolute;
-    top: 100%;
+    top: 80%;
+    border: solid 1px rgb(140, 138, 138);
+
+}
+.lineTittle{   
+    width: 100%; 
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+
+}
+.PrimaryLine{    
+    min-height: 50px;
+    display: flex;
+    border-bottom: solid 1px rgb(140, 138, 138);
+    border-top: solid 1px rgb(140, 138, 138);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
 }
 .line{
+    color: white;
+    min-height: 50px;
     display: flex;
-    border-bottom:solid 1px black;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
+    border-bottom:solid 1px rgb(140, 138, 138);
     align-items: center;
     justify-content: center;
 }
-.line div{
+.line div,.PrimaryLine div{
     width: 30%;
     text-align: center;
 
+}
+.line div a{
+    color: #008000;
 }
