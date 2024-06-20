@@ -11,14 +11,12 @@ const Login = ()=>
 <>
 <LoginHeader/>
 <section className={Styles.sectionLogin}>
-    
+    <img src={LogoLogin} className={Styles.LogoLogin} />    
 <form className={Styles.formLogin}>
     <h1>Acessar plataforma</h1>
-    <img src={LogoLogin} className={Styles.LogoLogin} />
     <label><h1>Email</h1><input type="text"/></label>
     <label><h1>Senha</h1><input type="text"/></label>
     <input type="submit" value="Login"/>
-    
 </form>
 </section>
 <FooterHeader/>

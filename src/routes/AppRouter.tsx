@@ -2,6 +2,15 @@ import {BrowserRouter,Routes,Route} from "react-router-dom"
 //pages
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register"
+import Home from "../Pages/Home/Home";
+//pages filhas
+import Main from "../Pages/operations/main/Main";
+import Publishers from "../Pages/operations/publishers/Publishers";
+import Reports from "../Pages/operations/reports/Reports";
+import Sales from "../Pages/operations/sales/Sales";
+import Stoks from "../Pages/operations/stoks/Stoks";
+
+//hooks
 
 
 const AppRouter = ()=>
@@ -12,6 +21,16 @@ return(
     <Routes>
     <Route path="/login" element={<Login/>}/>
     <Route path="/register" element={<Register/>}/>
+    
+    {/*children home*/}
+    {/*as rotas filhas nao pode conter a barra no path*/}
+    <Route path="/home" element={<Home/>}>
+        <Route index element={<Main/>}/>
+        <Route path="publishers" element={<Publishers/>}/>
+        <Route path="reports" element={<Reports/>}/>
+        <Route path="sales" element={<Sales/>}/>
+        <Route path="stoks" element={<Stoks/>}/>
+    </Route>
     </Routes>
     </BrowserRouter>
 )

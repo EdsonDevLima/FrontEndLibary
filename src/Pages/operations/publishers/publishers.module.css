@@ -1,0 +1,23 @@
+.sectionComponent{
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.sectionComponent form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.sectionComponent form label{
+    display: flex;
+    flex-direction: column;
+}
+.sectionComponent form input{
+    width: 100%;
+    min-height: 25px;
+    font-size: 20px;
+}
