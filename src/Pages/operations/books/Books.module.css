@@ -31,7 +31,7 @@
 .sectionComponent form input[type="submit"]{
     background-color: #ccc;
     border: solid 1px black;
-    color: white;
+    color: black;
     width: 80px;
     font-size: 15px;
     border-radius: 2px;

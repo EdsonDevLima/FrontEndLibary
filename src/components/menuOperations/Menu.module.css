@@ -4,7 +4,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #ccc;
+    border-right: solid 2px black;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -15,4 +15,10 @@
     width: 100%;
     margin: 10px;
     text-align: center;
+}
+.conteinerMenu div a{
+    width: 100%;
+    text-decoration: none;
+    color: black;
+
 }

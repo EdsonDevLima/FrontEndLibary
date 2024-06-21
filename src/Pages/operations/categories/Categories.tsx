@@ -1,15 +1,11 @@
-import Styles from "./publishers.module.css"
-const Publishers = ()=>{
+import Styles from "./Categories.module.css"
+const Categories = ()=>{
     return (
     <div className={Styles.sectionComponent}>
         <form>
-            <h1>Nova publicadora</h1>
+            <h1>Nova Categoria</h1>
             <label>
-                Nome da Editora:
-                <input type="text" />
-            </label>
-            <label>
-                Cnpj:
+                Nome da categoria:
                 <input type="text" />
             </label>
             <div className={Styles.conteinerbuttons}>
@@ -21,4 +17,4 @@ const Publishers = ()=>{
 
 
 }
-export default Publishers
+export default Categories

@@ -9,6 +9,8 @@ import Publishers from "../Pages/operations/publishers/Publishers";
 import Reports from "../Pages/operations/reports/Reports";
 import Sales from "../Pages/operations/sales/Sales";
 import Stoks from "../Pages/operations/stoks/Stoks";
+import Books from "../Pages/operations/books/Books";
+import Categories from "../Pages/operations/categories/Categories";
 
 //hooks
 
@@ -26,8 +28,9 @@ return(
     {/*as rotas filhas nao pode conter a barra no path*/}
     <Route path="/home" element={<Home/>}>
         <Route index element={<Main/>}/>
+        <Route path="books" element={<Books/>}/>
         <Route path="publishers" element={<Publishers/>}/>
-        <Route path="reports" element={<Reports/>}/>
+        <Route path="categories" element={<Categories/>}/>
         <Route path="sales" element={<Sales/>}/>
         <Route path="stoks" element={<Stoks/>}/>
     </Route>
