@@ -29,6 +29,7 @@ return(
     <Route path="/home" element={<Home/>}>
         <Route index element={<Main/>}/>
         <Route path="books" element={<Books/>}/>
+        <Route path="books/:id" element={<Books/>}/>
         <Route path="publishers" element={<Publishers/>}/>
         <Route path="categories" element={<Categories/>}/>
         <Route path="sales" element={<Sales/>}/>

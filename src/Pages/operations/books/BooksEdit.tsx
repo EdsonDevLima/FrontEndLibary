@@ -1,51 +1,32 @@
-import Styles from "./Books.module.css"
-import React, { useState } from "react"
-//componente que eu coloquei de teste
-import ListBook from "../../../components/ListBooks/ListBook"
-
-const Books = ()=>{
+import { useState,useEffect } from "react"
+import { useParams } from "react-router-dom"
+import Styles from "./BooksEdit.module.css"
+const BooksEdit = ()=>{
     const [Name,setName] = useState<string>("")
     const [Category,setCategory] = useState<string>("")
     const [Publishe,setPublishe] = useState<string>("")
     const [Author,setAuthor] = useState<string>("")
-    const [Amount,setAmount] = useState<string>("")
-    const [SelectedFile,setSelectedFile] = useState<any | null>(null)
-    //mecanismos
-    const [DisplaylistBooks,setDisplayList] = useState<boolean>(false)
-    const Displaylist = ():void=>{
-        if(DisplaylistBooks){
-            setDisplayList(false)
-        }
-        else{
-            setDisplayList(true)
-        }
-    }
+    const [Amount,setAmount] = useState<string>()
+    const {id} = useParams()    
+    const [book,setBook] = useState()
+    useEffect(()=>{
+    const request = async()=>{
+        const req = fetch()
 
 
-    const HandleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
-            e.preventDefault()
-            const Data = new FormData()
-            Data.append("Name",Name)
-            Data.append("Author",Author)
-            Data.append("amount",Amount)
-            Data.append("CategoryId",Category)
-            Data.append("file",SelectedFile)
-            try{
-                const request = await fetch("http://localhost:3000/books/create",{method:"POST",body:Data})
-                const response = await request.json()
-                console.log(Data)
-                console.log(response)
-            }catch(err){
-                console.log(err)
-            }
 
     }
 
 
-    return (
+
+
+
+
+    },[])
+    return(
         <div className={Styles.sectionComponent}>
-        <form onSubmit={HandleSubmit}>
-            <h1>Cadastrar livro</h1>
+            <form>
+            <h1>Editar dados de livro</h1>
             <label>
                 Nome do livro:
                 <input type="text" value={Name} onChange={(e)=>setName(e.target.value)} />
@@ -83,24 +64,11 @@ const Books = ()=>{
                 <input type="file"  onChange={(e)=>{if (e.target.files && e.target.files.length > 0){setSelectedFile(e.target.files[0])}}} required />
             </label>
                 <div className={Styles.conteinerbuttons}>
-                    <input type="submit" value="Salvar"/>
-                    <button onClick={Displaylist}>Consultar lista de livro</button>     
-                                  
+                    <input type="submit" value="Salvar"/>                                 
                 </div>
 
         </form>
-        {DisplaylistBooks &&( <>
-        <ListBook/>
-        <button className={Styles.buttonCloseList} onClick={Displaylist}>voltar</button>
-        </>) }
-        
-    </div>
-
-
-
-    )
+        </div>)
 }
 
-
-
-export default Books
+export default BooksEdit
