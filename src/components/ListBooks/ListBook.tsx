@@ -13,7 +13,29 @@ const ListBook = ()=>{
      
      request()
     },[])
-    console.log(ListAllBooks)
+
+    const removeBook = async ({ id }:{id:any}) => {
+        const response = await fetch("http://localhost:3000/books/delete", {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: id })
+        });
+    
+        if (response.ok) {
+            const data = await response.json();
+            console.log("Livro removido com sucesso:", data);
+        } else {
+            console.error("Erro ao remover livro:", response.statusText);
+        }
+    };
+
+
+
+
+
+    
     return (
     <div className={Styles.ConteinerList}>
         <div className={Styles.list}>
@@ -38,8 +60,11 @@ return(
 <th>EDITORA</th>
 <th>{book.amount}</th>
 <th>
-    <Link  to={`/home/books/edit`}>Editar</Link>
-    <Link  to={`/home/books/remove`}>Remover</Link>
+    <Link  to={`/home/books/${book.id}`}>Editar</Link>
+    <button onClick={()=>{
+        removeBook(book.id)
+
+        }}>Remover</button>
 </th>
 </tr>
 )

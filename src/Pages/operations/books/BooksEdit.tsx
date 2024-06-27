@@ -11,18 +11,20 @@ const BooksEdit = ()=>{
     const [book,setBook] = useState()
     useEffect(()=>{
     const request = async()=>{
-        const req = fetch()
-
-
+        const req = await fetch(`http://localhost:3000/books/book/${id}`)
+        const response = await req.json()
+        const data = response.book
+        setName(data.Name)
+        setCategory(data.CategoryId)
+        setName(data.name)
+        setAuthor(data.Author)
+        setAmount(data.amount)
 
     }
-
-
-
-
-
-
-    },[])
+    if(id != null || id != ""){
+        request()
+    }
+},[])
     return(
         <div className={Styles.sectionComponent}>
             <form>
@@ -61,7 +63,7 @@ const BooksEdit = ()=>{
             </label>
             <label>
                 Imagem do livro:
-                <input type="file"  onChange={(e)=>{if (e.target.files && e.target.files.length > 0){setSelectedFile(e.target.files[0])}}} required />
+                <input type="file"/>
             </label>
                 <div className={Styles.conteinerbuttons}>
                     <input type="submit" value="Salvar"/>                                 

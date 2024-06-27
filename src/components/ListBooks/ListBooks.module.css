@@ -34,6 +34,15 @@
     margin: 5px;
     text-decoration: none;
 }
+.list table tr th button{
+    margin: 5px;
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    color: #0066cc;
+
+}
 .tittleList{
     color: green;
 }
