@@ -14,7 +14,7 @@ const Publishers = ()=>{
             </label>
             <div className={Styles.conteinerbuttons}>
                     <input type="submit" value="Salvar"/>
-                    <button>Consultar lista de livro</button>                    
+                    <button>Consultar lista de Editoras</button>                    
                 </div>
         </form>
     </div>)

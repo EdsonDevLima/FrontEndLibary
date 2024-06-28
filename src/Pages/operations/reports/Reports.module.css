@@ -1,0 +1,23 @@
+.sectionsReports{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.sectionsReports form{
+    min-width: 350px;
+    border: solid 1px rgb(134, 134, 134);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin: 10px;
+}
+.sectionsReports form label{
+    margin: 10px;
+    flex-direction: column;
+    display: flex;
+}

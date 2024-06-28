@@ -1,5 +1,28 @@
+import React from "react"
 import Styles from "./Categories.module.css"
 const Categories = ()=>{
+
+    const HandleSubmit =  async(e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        try
+        {
+            const response = await fetch("http://localhost:3000/category/create",{method:"POST"})
+        }
+        catch(err)
+        {}
+
+
+
+
+    }
+
+
+
+
+
+
+
+
     return (
     <div className={Styles.sectionComponent}>
         <form>
@@ -10,7 +33,7 @@ const Categories = ()=>{
             </label>
             <div className={Styles.conteinerbuttons}>
                     <input type="submit" value="Salvar"/>
-                    <button>Consultar lista de livro</button>                    
+                    <button>Consultar lista de categorias</button>                    
                 </div>
         </form>
     </div>)

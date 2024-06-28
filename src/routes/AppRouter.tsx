@@ -11,6 +11,7 @@ import Stoks from "../Pages/operations/stoks/Stoks";
 import Books from "../Pages/operations/books/Books";
 import Categories from "../Pages/operations/categories/Categories";
 import BooksEdit from "../Pages/operations/books/BooksEdit";
+import Reports from "../Pages/operations/reports/Reports";
 
 //hooks
 
@@ -32,6 +33,7 @@ return(
         <Route path="books/:id" element={<BooksEdit/>}/>
         <Route path="publishers" element={<Publishers/>}/>
         <Route path="categories" element={<Categories/>}/>
+        <Route path="reports" element={<Reports/>}/>
         <Route path="sales" element={<Sales/>}/>
         <Route path="stoks" element={<Stoks/>}/>
     </Route>

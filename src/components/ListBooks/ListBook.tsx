@@ -14,7 +14,10 @@ const ListBook = ()=>{
      request()
     },[])
 
-    const removeBook = async ({ id }:{id:any}) => {
+
+
+
+    const removeBook = async (id: any): Promise<void> => {
         const response = await fetch("http://localhost:3000/books/delete", {
             method: "DELETE",
             headers: {
@@ -22,14 +25,24 @@ const ListBook = ()=>{
             },
             body: JSON.stringify({ id: id })
         });
-    
+
         if (response.ok) {
             const data = await response.json();
             console.log("Livro removido com sucesso:", data);
+            // Atualizar a lista de livros após a remoção
+            setListBooks((prevBooks: any) => ({
+                ...prevBooks,
+                AllBooks: prevBooks.AllBooks.filter((book: any) => book.id !== id)
+            }));
         } else {
             console.error("Erro ao remover livro:", response.statusText);
         }
     };
+
+
+
+
+
 
 
 
@@ -61,8 +74,8 @@ return(
 <th>{book.amount}</th>
 <th>
     <Link  to={`/home/books/${book.id}`}>Editar</Link>
-    <button onClick={()=>{
-        removeBook(book.id)
+    <button onClick={ async()=>{
+       await removeBook(book.id)
 
         }}>Remover</button>
 </th>

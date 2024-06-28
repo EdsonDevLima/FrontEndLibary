@@ -1,14 +1,22 @@
 import { useState,useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Styles from "./BooksEdit.module.css"
+import { DataCategory } from "../../../Types/DataCategoty"
+import { DataPublisher } from "../../../Types/DataPublisher"
 const BooksEdit = ()=>{
     const [Name,setName] = useState<string>("")
     const [Category,setCategory] = useState<string>("")
-    const [Publishe,setPublishe] = useState<string>("")
     const [Author,setAuthor] = useState<string>("")
-    const [Amount,setAmount] = useState<string>()
+    const [Publisher,setPublisher] = useState<string>("")
+    const [PriceUnit,setPriceUnit] = useState<string>("")
+    const [Amount,setAmount] = useState<string>("")
+    const [SelectedFile,setSelectedFile] = useState<any | null>(null)
     const {id} = useParams()    
     const [book,setBook] = useState()
+
+//data category
+    const [dataCategories,setCategories] = useState<DataCategory[]>([])
+    const [dataPublisher,setDataPublisher] = useState<DataPublisher[]>([])
     useEffect(()=>{
     const request = async()=>{
         const req = await fetch(`http://localhost:3000/books/book/${id}`)
@@ -16,15 +24,50 @@ const BooksEdit = ()=>{
         const data = response.book
         setName(data.Name)
         setCategory(data.CategoryId)
-        setName(data.name)
+        setName(data.Name)
         setAuthor(data.Author)
-        setAmount(data.amount)
+        setAmount(data.Amount)
+        setPriceUnit(data.PriceUnit)
+        setPublisher(data.Publisher)
 
     }
-    if(id != null || id != ""){
-        request()
+    const requestCategory = async ()=>{
+
+        try
+        {
+        const response = await fetch("http://localhost:3000/category/all")
+        const data = await response.json()
+        await setCategories(data.allCategories) 
+        console.log(dataCategories)               
+        }catch(err)
+        {
+            console.log(err)
+        }
+
     }
+
+    const requestPublisher = async()=>{
+
+        try{            
+        const response = await fetch("http://localhost:3000/publisher/all")
+        const data = await response.json()
+        await setDataPublisher(data.AllPublisher)
+            console.log(dataPublisher)
+            
+        }catch(err){
+            console.log(err)
+        }
+
+    }
+
+    if(id != null || id != ""){
+    request()    
+    requestCategory()
+    requestPublisher()
+    }
+
 },[])
+
     return(
         <div className={Styles.sectionComponent}>
             <form>
@@ -36,21 +79,15 @@ const BooksEdit = ()=>{
             <label>
                 Categorias:
                 <select value={Category} onChange={(e)=>setCategory(e.target.value)}>
-                    <option disabled value={"Selecione uma categoria"}>Selecione uma categoria</option>
-                    <option value={"ficçao"}>Ficção</option>
-                    <option value={"romance"}>Romance</option>
-                    <option value={"religiao"}>Religiçao</option>
-                    <option value={"terror"}>Terror</option>
+                    <option disabled  value={""}>Selecione uma categoria</option>
+                    {dataCategories?.map((item)=><option key={item.id + item.id} value={item.id}>{item.Name}</option>)}
                 </select>
             </label>
             <label>
                 Editora:
-                <select  value={Publishe} onChange={(e)=>setPublishe(e.target.value)}>
-                    <option disabled value={"Selecione uma Editora"}>Selecione uma Editora</option>
-                    <option value={"teste"}>teste</option>
-                    <option value={"ctm"}>ctm</option>
-                    <option value={"givaldo som"}>givaldo som</option>
-                    <option value={"lotericas caixa"}>lotericas caixa</option>
+                <select  value={Publisher} onChange={(e)=>setPublisher(e.target.value)}>
+                    <option disabled  value={""}>Selecione uma Editora</option>
+                    {dataPublisher?.map((item)=><option key={item.id + item.id}  value={item.Name}>{item.Name}</option>)}
                 </select>
             </label>
             <label>
@@ -60,6 +97,10 @@ const BooksEdit = ()=>{
             <label>
                 Quantidade:
                 <input type="number"  value={Amount} onChange={(e)=>setAmount(e.target.value)} required />
+            </label>
+            <label>
+                Preço unitario:
+                <input type="number" step={".01"}  value={PriceUnit} onChange={(e)=>setPriceUnit(e.target.value)} required />
             </label>
             <label>
                 Imagem do livro:
