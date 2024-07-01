@@ -1,11 +1,16 @@
 import Styles from "./Books.module.css"
-import React, { useState,useEffect } from "react"
+import React, { useState,useEffect,useContext } from "react"
 //componente que eu coloquei de teste
 import ListBook from "../../../components/ListBooks/ListBook"
 
 ////
 import { DataCategory } from "../../../Types/DataCategoty"
 import { DataPublisher } from "../../../Types/DataPublisher"
+//context
+import { Context } from "../../../context/context"
+
+
+
 
 const Books = ()=>{
     //data form
@@ -19,11 +24,20 @@ const Books = ()=>{
     //data category
     const [dataCategories,setCategories] = useState<DataCategory[]>([])
     const [dataPublisher,setDataPublisher] = useState<DataPublisher[]>([])
+    //context
+    const AuthContext = useContext(Context)
+    
     
     useEffect(()=>{
+        if(!AuthContext){
+            console.log("erro com acesso no context")
+
+        }else{
+            const {requestTokenAutheticate} = AuthContext
+            requestTokenAutheticate("login")
+        }
 
         const requestCategory = async ()=>{
-
             try
             {
             const response = await fetch("http://localhost:3000/category/all")

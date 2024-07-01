@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom"
 import Styles from "./BooksEdit.module.css"
 import { DataCategory } from "../../../Types/DataCategoty"
 import { DataPublisher } from "../../../Types/DataPublisher"
+
+
+
+
 const BooksEdit = ()=>{
     const [Name,setName] = useState<string>("")
     const [Category,setCategory] = useState<string>("")
@@ -13,6 +17,7 @@ const BooksEdit = ()=>{
     const [SelectedFile,setSelectedFile] = useState<any | null>(null)
     const {id} = useParams()    
     const [book,setBook] = useState()
+
 
 //data category
     const [dataCategories,setCategories] = useState<DataCategory[]>([])

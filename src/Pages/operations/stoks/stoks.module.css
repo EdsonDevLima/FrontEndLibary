@@ -1,0 +1,52 @@
+.sectionStock{
+    width: 70%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+.listStock{
+    width: 80%;
+    min-height: 80vh;
+    overflow-y: scroll;
+    border: solid 1px black;
+    
+}
+.listStock div{
+    display: flex;
+    border-bottom: solid 1px black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.listStock div p{
+    margin: 8px;
+    border-right: solid 1px black;
+    padding: 8px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.listStock div p span{
+    color: forestgreen;
+}
+.listStock div a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px black;
+    background-color: green;
+    color: white;
+    margin: 10px;
+}
+.listStock h1{
+    width: 100%;
+    text-align: center;
+    border-bottom: solid 1px black;
+}
