@@ -9,9 +9,11 @@
 }
 .listStock{
     width: 80%;
+    min-width: 400px;
     min-height: 80vh;
     overflow-y: scroll;
-    border: solid 1px black;
+    border-radius: 9px;
+    border: solid 1px rgb(126, 126, 126);
     
 }
 .listStock div{
@@ -40,10 +42,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 1px black;
+    border: none;
     background-color: green;
     color: white;
     margin: 10px;
+    padding: 8px;
 }
 .listStock h1{
     width: 100%;

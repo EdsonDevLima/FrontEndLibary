@@ -1,13 +1,13 @@
 import Styles from "./Register.module.css"
 import LogoLogin from "../../../public/imgs/logologin.png"
 
-//componentes
-import LoginHeader from "../../components/auth/LoginHeader"
-import FooterHeader from "../../components/auth/FooterHeader"
+
+
 //context
 import { Context } from "../../context/context"
 import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../Types/DataContext"
+import { Link } from "react-router-dom"
 const Register = ()=>{
         //data
         const [UserName,setUserName] = useState<string>("")
@@ -32,7 +32,7 @@ const Register = ()=>{
         }
     return (
         <>
-        <LoginHeader/>
+
     <section className={Styles.sectionRegister}>
     <img src={LogoLogin} className={Styles.LogoLogin} />
     <form className={Styles.formRegister} onSubmit={handleSubmit}>
@@ -42,10 +42,11 @@ const Register = ()=>{
     <label><h1>Senha</h1><input type="text" value={Password} onChange={(e)=>setPassword(e.target.value)}/></label>
     <label><h1>Confirmaçao de senha</h1><input value={ConfirmPassword} type="text"  onChange={(e)=>setConfirmPassword(e.target.value)}/></label>
     <input type="submit" value="Login"/>
+    <Link to={"/login"}>Ja tenho Cadastro</Link>
     
 </form>
 </section>
-        <FooterHeader/>
+
 </>
 
 

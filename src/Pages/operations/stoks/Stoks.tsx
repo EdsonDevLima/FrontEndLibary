@@ -31,8 +31,8 @@ useEffect(()=>{
                 <p><span>Preço unitario:</span> R${book.PriceUnit}</p>
                 <p><span>Autor:</span>{book.Author}</p>
                 <p><span>Quantidade:</span>{book.Amount}</p>
-                <Link to={`/home/books/${book.id}`}>Editar</Link>
-            </div>) : <div><span>Estoque vazio</span><Link to={"/home/books"}>Registrar livro</Link></div>}
+                <Link to={`/books/${book.id}`}>Editar</Link>
+            </div>) : <div><span>Estoque vazio</span><Link to={"/books"}>Registrar livro</Link></div>}
             </div>
         </section>
     )

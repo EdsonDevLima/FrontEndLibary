@@ -32,7 +32,7 @@ return(
     
     {/*children home*/}
     {/*as rotas filhas nao pode conter a barra no path*/}
-                <Route path="/home" element={<Home/>}>
+                <Route path="/" element={<Home/>}>
                     <Route index element={<Main/>}/>
                     <Route path="books" element={<Books/>}/>
                     <Route path="books/:id" element={<BooksEdit/>}/>

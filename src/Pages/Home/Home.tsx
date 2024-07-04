@@ -6,6 +6,9 @@ import Styles from "./Home.module.css"
 import { Context } from "../../context/context"
 import { useContext,useEffect } from "react"
 
+//componentes
+import HeaderAuth from "../../components/HeaderAuth/HeaderAuth"
+
 const Home = ()=>{
     const AuthContext = useContext(Context)
     
@@ -26,9 +29,13 @@ const Home = ()=>{
     },[])
  return (
     <section className={Styles.section}>
+        <HeaderAuth/>
+        
         <MenuMain/>
         {/*esse outlet serve para indicar onde as pages filhas vao ser exibidas*/}
+        <div className={Styles.conteinerContent}>
         <Outlet/>
+        </div>
     </section>
 
  )

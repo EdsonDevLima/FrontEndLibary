@@ -5,12 +5,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    overflow-y: scroll; 
     position: relative;
     
 }
 .sectionComponent form{
     width: 60%;
+    min-width: 350px;
     min-height: 350px;
     display: flex;
     flex-direction: column;

@@ -5,12 +5,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    overflow-y: scroll; 
     position: relative;
     
 }
 .sectionComponent form{
     width: 60%;
+    min-width: 300px;
     min-height: 350px;
     display: flex;
     flex-direction: column;
@@ -29,6 +29,7 @@
     font-size: 20px;
 }
 .sectionComponent form input[type="submit"]{
+    min-width: 90px;
     background-color: #ccc;
     border: solid 1px black;
     color: white;
@@ -40,6 +41,7 @@
 .conteinerbuttons{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .conteinerbuttons button{
     background-color: #ccc;

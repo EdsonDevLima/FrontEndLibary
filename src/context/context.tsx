@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
 import {DataContext} from "../Types/DataContext"
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 //criaçao do contexto com os valores que seram passador no context
@@ -37,20 +36,26 @@ const ContextProvider = ({children}:{children:ReactNode})=>{
             console.log(response.message)
         }
     }
+    const Logout = ()=>{
+        localStorage.removeItem("token")
+        Navigate("/login")
+    }
 
     const requestTokenAutheticate = async (route:string)=>{
-        const token = await localStorage.getItem("token")
-        if(token){
-            const request = await fetch("http://localhost:3000/auth/getuser",{method:"POST",headers:{"Content-type":"application/json"},body:JSON.stringify({token})})
+        const Datatoken =  localStorage.getItem("token")   
+        if(Datatoken){
+            const token = JSON.parse(Datatoken)
+            const request = await fetch("http://localhost:3000/auth/getuser",{method:"POST",headers:{"Content-Type": "application/json"},body:JSON.stringify({token:token})})
             const response = await request.json()
-            const user = await response.user
+            const user =  response.user
+            console.log(user,response)
             if(user){
             setId(user.id)
             setUserName(user.UserName)
             setEmail(user.Email)
             setIsAutheticated(true)
             }else{
-                console.log("usuario nao encontrado no useEffect com context")
+                console.log("usuario nao encontrado na requisiçao")
             }
         }else{
             console.log("token nao encontrado")
@@ -58,7 +63,7 @@ const ContextProvider = ({children}:{children:ReactNode})=>{
         }}
   
     return(
-        <Context.Provider value={{Id,UserName,Email,IsAutheticated,Login,Register,requestTokenAutheticate}}>
+        <Context.Provider value={{Id,UserName,Email,IsAutheticated,Login,Register,requestTokenAutheticate,Logout}}>
             {children}
         </Context.Provider>
     )
