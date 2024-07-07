@@ -26,6 +26,8 @@ const Books = ()=>{
     const [dataPublisher,setDataPublisher] = useState<DataPublisher[]>([])
     //context
     const AuthContext = useContext(Context)
+    //token
+    const token = localStorage.getItem("token")
     
     
     useEffect(()=>{
@@ -40,7 +42,7 @@ const Books = ()=>{
         const requestCategory = async ()=>{
             try
             {
-            const response = await fetch("http://localhost:3000/category/all")
+            const response = await fetch("http://localhost:3000/category/all",{headers:{"Authorization":`Bearer ${token}`}})
             const data = await response.json()
             await setCategories(data.allCategories) 
             console.log(dataCategories)               
@@ -54,7 +56,7 @@ const Books = ()=>{
         const requestPublisher = async()=>{
 
             try{            
-            const response = await fetch("http://localhost:3000/publisher/all")
+            const response = await fetch("http://localhost:3000/publisher/all",{headers:{"Authorization":`Bearer ${token}`}})
             const data = await response.json()
             await setDataPublisher(data.AllPublisher)
                 console.log(dataPublisher)
@@ -67,8 +69,6 @@ const Books = ()=>{
         requestCategory()
         requestPublisher()
     },[])
-
-
 
     //mecanismos
     const [DisplaylistBooks,setDisplayList] = useState<boolean>(false)
@@ -93,7 +93,7 @@ const Books = ()=>{
             Data.append("PriceUnit",PriceUnit)
             Data.append("file",SelectedFile)
             try{
-                const request = await fetch("http://localhost:3000/books/create",{method:"POST",body:Data})
+                const request = await fetch("http://localhost:3000/books/create",{method:"POST",headers:{"Authorization":`Bearer ${token}`},body:Data})
                 const response = await request.json()
                 console.log(response)
             }catch(err){

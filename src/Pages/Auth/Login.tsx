@@ -46,10 +46,10 @@ const Login = ()=>
 <form className={Styles.formLogin} onSubmit={handleSubmit}>
     <h1>Acessar plataforma</h1>
     <label><h1>Email</h1><input type="text" value={Email} onChange={(e)=>setEmail(e.target.value)}/></label>
-    <label><h1>Senha</h1><input type="text" value={Password} onChange={(e)=>setPassword(e.target.value)}/></label>
+    <label><h1>Senha</h1><input type="password" value={Password} onChange={(e)=>setPassword(e.target.value)}/></label>
     <input type="submit" value="Login"/>
     <Link to={"/register"}>Ainda nao possui login?Cadastrar-se</Link>
-    <Link to={"/register"}>Pular Login</Link>
+    <button>Pular Login e registro</button>
 </form>
 </section>
 </>
