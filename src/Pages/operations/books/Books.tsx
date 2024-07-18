@@ -8,6 +8,7 @@ import { DataCategory } from "../../../Types/DataCategoty"
 import { DataPublisher } from "../../../Types/DataPublisher"
 //context
 import { Context } from "../../../context/context"
+import { ActiveFlashMessage } from "../../../hooks/ActiveFlashMessage"
 
 
 
@@ -28,6 +29,9 @@ const Books = ()=>{
     const AuthContext = useContext(Context)
     //token
     const token = localStorage.getItem("token")
+    //error capture
+    const [handleError,setError] = useState<string>("")
+    
     
     
     useEffect(()=>{
@@ -44,8 +48,7 @@ const Books = ()=>{
             {
             const response = await fetch("http://localhost:3000/category/all",{headers:{"Authorization":`Bearer ${token}`}})
             const data = await response.json()
-            await setCategories(data.allCategories) 
-            console.log(dataCategories)               
+            await setCategories(data.allCategories)               
             }catch(err)
             {
                 console.log(err)
@@ -62,6 +65,7 @@ const Books = ()=>{
                 console.log(dataPublisher)
                 
             }catch(err){
+                
                 console.log(err)
             }
 
@@ -95,9 +99,22 @@ const Books = ()=>{
             try{
                 const request = await fetch("http://localhost:3000/books/create",{method:"POST",headers:{"Authorization":`Bearer ${token}`},body:Data})
                 const response = await request.json()
-                console.log(response)
+                if(request.ok){
+                    setName("")
+                    setAmount("")
+                    setAuthor("")
+                    setPriceUnit("")
+                    setSelectedFile(null)
+                    ActiveFlashMessage(response.message,200)
+                }else{
+                    ActiveFlashMessage(response.message,401)
+                    setError(response)
+                }
+                
+                
+                
             }catch(err){
-                console.log(err)
+                ActiveFlashMessage(handleError,500)
             }
 
 
@@ -145,10 +162,13 @@ const Books = ()=>{
             </label>
                 <div className={Styles.conteinerbuttons}>
                     <input type="submit" value="Salvar"/>
-                    <button onClick={Displaylist}>Consultar lista de livro</button>                  
+                                     
                 </div>
 
         </form>
+
+        {!DisplaylistBooks && <button onClick={Displaylist} className={Styles.buttonList}>Consultar lista de livro</button>} 
+
         {DisplaylistBooks &&( <>
         <ListBook/>
         <button className={Styles.buttonCloseList} onClick={Displaylist}>voltar</button>

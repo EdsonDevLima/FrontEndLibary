@@ -40,7 +40,7 @@
     display: flex;
     justify-content: space-around;
 }
-.conteinerbuttons button{
+.conteinerbuttons button,.buttonList{
     background-color: #ccc;
     border: solid 1px black;
     color: black;

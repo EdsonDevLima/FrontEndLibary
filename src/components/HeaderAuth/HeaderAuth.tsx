@@ -5,6 +5,7 @@ import { useContext, useState,useEffect } from "react"
 import { Context } from "../../context/context"
 
 import LogoProfile from "../../assets/profile.png"
+import { ToastContainer } from "react-toastify"
 
 const HeaderAuth = ()=>{
     const [userName,setUserName] = useState<string>("")
@@ -24,6 +25,7 @@ const HeaderAuth = ()=>{
                 <img src={LogoProfile} onClick={()=> displayLogout?setDisplayLogout(false):setDisplayLogout(true)}/>
                 {displayLogout &&        
             <div className={Styles.menuProfile}>
+                <ToastContainer/>
                 <p className={Styles.data}>Email:{Email}</p>
                 <p className={Styles.data}>Usuario:{userName}</p>
                 <p className={Styles.disable}>Mudar senha</p>

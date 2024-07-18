@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import Styles from "./ListBooks.module.css"
 import { Link } from "react-router-dom";
+import { ActiveFlashMessage } from "../../hooks/ActiveFlashMessage";
 const ListBook = ()=>{
     const [ListAllBooks,setListBooks] = useState<any | undefined>();
     const [token,setToken] = useState<string>("")
@@ -28,15 +29,18 @@ const ListBook = ()=>{
             },
             body: JSON.stringify({ id: id })
         });
+        const data = await response.json()
 
         if (response.ok) {
             // Atualizar a lista de livros após a remoção
+            ActiveFlashMessage(data.message,202)
             setListBooks((prevBooks: any) => ({
                 ...prevBooks,
                 AllBooks: prevBooks.AllBooks.filter((book: any) => book.id !== id)
-            }));
+            }
+        ));
         } else {
-            console.error("Erro ao remover livro:", response.statusText);
+            ActiveFlashMessage(data.message,500)
         }
     };
     return (
@@ -63,7 +67,7 @@ return(
 <th>EDITORA</th>
 <th>{book.amount}</th>
 <th>
-    <Link  to={`/home/books/${book.id}`}>Editar</Link>
+    <Link  to={`/books/${book.id}`}>Editar</Link>
     <button onClick={ async()=>{
        await removeBook(book.id)
 

@@ -7,6 +7,12 @@
     flex-wrap: wrap;
     flex-direction: column;
 }
+.sectionLogin button{
+    background-color: green;
+    color: white;
+    padding: 8px;
+    border: none;
+}
 .sectionLogin img{
     width: 150px;
 } 

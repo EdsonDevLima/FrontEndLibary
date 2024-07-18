@@ -7,8 +7,12 @@ import LogoLogin from "../../../public/imgs/logologin.png"
 import { Context } from "../../context/context"
 import { useContext, useState } from "react"
 import { DataContext } from "../../Types/DataContext"
-import { useNavigate } from "react-router-dom"
+import { ActiveFlashMessage } from "../../hooks/ActiveFlashMessage"
 import { Link } from "react-router-dom"
+
+
+//toas
+import { ToastContainer } from "react-toastify"
 const Register = ()=>{
         //data
         const [UserName,setUserName] = useState<string>("")
@@ -18,8 +22,7 @@ const Register = ()=>{
         //context
         const authContext = useContext<DataContext | null>(Context)
         //
-        const Navigate = useNavigate()
-    
+
         const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
             e.preventDefault()
 
@@ -31,10 +34,10 @@ const Register = ()=>{
             setEmail("")
             setPassword("")
             setConfirmPassword("")
-            Navigate("/")
+
             
         }catch(err){
-            console.log(err)
+            ActiveFlashMessage(`${err}`,500)
         }
            
         }
@@ -44,6 +47,7 @@ const Register = ()=>{
 
     <section className={Styles.sectionRegister}>
     <img src={LogoLogin} className={Styles.LogoLogin} />
+    <ToastContainer/>
     <form className={Styles.formRegister} onSubmit={handleSubmit}>
         <h1>Cadastrar-se</h1>
     <label><h1>Usuario</h1><input type="text" value={UserName} onChange={(e)=>setUserName(e.target.value)}/></label>

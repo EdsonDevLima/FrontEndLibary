@@ -1,8 +1,9 @@
 import { useState,useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Styles from "./BooksEdit.module.css"
 import { DataCategory } from "../../../Types/DataCategoty"
 import { DataPublisher } from "../../../Types/DataPublisher"
+import { ActiveFlashMessage } from "../../../hooks/ActiveFlashMessage"
 
 
 
@@ -15,8 +16,8 @@ const BooksEdit = ()=>{
     const [PriceUnit,setPriceUnit] = useState<string>("")
     const [Amount,setAmount] = useState<string>("")
     const [SelectedFile,setSelectedFile] = useState<any | null>(null)
-    const {id} = useParams()    
-    const [book,setBook] = useState()
+    const {id} = useParams()
+    const Navigate = useNavigate()
 
 
 //data category
@@ -34,6 +35,7 @@ const BooksEdit = ()=>{
         setAmount(data.Amount)
         setPriceUnit(data.PriceUnit)
         setPublisher(data.Publisher)
+        
 
     }
     const requestCategory = async ()=>{
@@ -42,8 +44,7 @@ const BooksEdit = ()=>{
         {
         const response = await fetch("http://localhost:3000/category/all")
         const data = await response.json()
-        await setCategories(data.allCategories) 
-        console.log(dataCategories)               
+        await setCategories(data.allCategories)               
         }catch(err)
         {
             console.log(err)
@@ -72,10 +73,14 @@ const BooksEdit = ()=>{
     }
 
 },[])
+    const handleSubmit = ()=>{
+        ActiveFlashMessage("Registro editado com sucesso",200)
+        Navigate("/books")
+    }
 
     return(
         <div className={Styles.sectionComponent}>
-            <form>
+            <form onSubmit={handleSubmit}>
             <h1>Editar dados de livro</h1>
             <label>
                 Nome do livro:
